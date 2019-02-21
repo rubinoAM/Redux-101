@@ -14,7 +14,13 @@ class Student extends Component{
         super()
     } */
 
+    addNewStudent = ()=>{
+        const name = document.getElementById('student-name').value;
+        this.props.addStudent(name);
+    }
+
     render(){
+        //console.log(this.props);
         const students = this.props.rightSideOfRoom.map((student,i)=>{
             return(
                 <li key={i}>{student}</li>
@@ -24,6 +30,8 @@ class Student extends Component{
         return(
             <div>
                 <h1>Students</h1>
+                <input type='text' id="student-name" placeholder="Student Name"/>
+                <button onClick={this.addNewStudent}>Add Student</button>
                 {students}
             </div>
         );

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 //We need bindActionCreators from Redux to get actions to dispatch to the reducers.
 import { bindActionCreators } from 'redux';
+import addStudent from '../actions/addStudent';
 
 class Student extends Component{
     /* constructor(){
@@ -39,5 +40,18 @@ function mapStateToProps(state){    //state = rootReducer
     }
 }
 
+function mapDispatchToProps(dispatch){
+    return bindActionCreators(
+        // bindActionCreators takes an object as its first param
+        // object property is the local prop name (this.props.aaaaa)
+        // object value is the callback (the action file.js)
+        {
+            addStudent: addStudent,
+        }, 
+        // bindActionCreators takes a dispatcher as its 2nd param
+        dispatch
+    );
+}
+
 //export default Student;
-export default connect(mapStateToProps)(Student);
+export default connect(mapStateToProps,mapDispatchToProps)(Student);
